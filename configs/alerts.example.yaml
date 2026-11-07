@@ -1,0 +1,8 @@
+# Copy to configs/alerts.yaml (git-ignored). Apprise URLs, for example
+#   ntfy://<long-random-topic>      (anyone who knows a public ntfy topic can read it: use a long random name or a token)
+#   pover://<user_key>@<app_token>  (Pushover)
+# With no URLs, alerts go to data/reports/alerts.log and the console.
+urls: []
+offsets_minutes: [120, 30, 10]   # before each lock deadline
+heartbeat_url: null              # e.g. a healthchecks.io ping URL, pinged every 5 minutes on game days
+app_link: null                   # link put in each notification (your Tailscale address)

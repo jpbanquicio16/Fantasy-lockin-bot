@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lockin"
+version = "0.1.0"
+description = "Lineup and lock assistant for Sleeper Lock-In fantasy basketball: who to start, in which slot, and lock now / wait / pass"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "polars>=1.0",
+    "httpx>=0.27",
+    "pydantic>=2.6",
+    "pyyaml>=6",
+    "pdfplumber>=0.11",
+    "apscheduler>=3.10,<4",
+    "apprise>=1.8",
+    "streamlit>=1.37",
+    "tzdata>=2024.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "hypothesis>=6.100"]
+
+[project.scripts]
+lockin = "lineup_lock.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: long-running tests",
+    "network: tests that call external APIs",
+]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120

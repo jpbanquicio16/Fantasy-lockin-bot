@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.hypothesis/
+.ruff_cache/
+*.egg-info/
+.DS_Store
+data/*
+!data/.gitkeep
+configs/league.yaml
+configs/alerts.yaml

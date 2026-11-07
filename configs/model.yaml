@@ -1,0 +1,17 @@
+# Projection settings. Every value here is an Assumption until fitted (design section 9);
+# `lockin fit` records which are fitted. Half-lives are in games.
+half_life_games: {min: 5, pts: 10, reb: 10, ast: 10, tov: 10, fg3m: 10, stl: 20, blk: 20}
+previous_season_weight: 0.6
+min_games_own_residuals: 15
+min_minutes_residual_game: 8
+availability:
+  # P(play) by official status (design section 9 table): replaced cell by cell from the
+  # archived reports once a status x lead-time cell holds 200 player-games.
+  status_prior: {out: 0.0, doubtful: 0.10, questionable: 0.55, probable: 0.93, available: 0.99}
+  late_scratch: 0.01             # after the last report, for a player listed Available
+  questionable_late_share: 0.35  # share of a Questionable player's miss risk that resolves only at tip
+  out_return_hazard: 0.25        # chance per team game that a long-term Out player returns
+  ir_return_hazard: 0.03
+  prior_uncertainty_logit_sd: 0.4
+  healthy_floor_same_day: 0.97
+  healthy_floor_next_day: 0.95

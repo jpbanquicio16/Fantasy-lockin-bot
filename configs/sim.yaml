@@ -1,0 +1,11 @@
+objective: points                # points | win
+scenarios: {start: 2000, max: 16000, target_paired_se_fp: 0.2, wall_clock_s: 20}
+candidates: {max_actions: 60, top_lineups: 5, screen_scenarios: 500, finalists: 12, keep_within_paired_se: 2}
+base_policy: {assignment: fast, seat_by: tonight_mean, value_open_entries: true, defer_to_deadline: true, quantile_grid: 21}
+planning_scenarios: 2000         # separate draws that build the continuation tables
+close_call: {model_draws: 30, scenarios_per_draw: 300, lean_band: [0.65, 0.90], either_is_fine_fp: 1.0}
+wait: {min_voi_fp: 0.5, min_branch_scenarios: 500}
+within_week_rho: 0.0             # until estimated and tested (design section 9)
+game_minutes: 150                # tip to final, for simulated chronology
+opponent_policies: [base, never_lock, lock_above_average]
+seed: null                       # null = derived from the snapshot id (reproducible)

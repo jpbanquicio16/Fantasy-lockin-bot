@@ -1,0 +1,29 @@
+# Copy to configs/league.yaml (git-ignored) and fill in your league.
+# Slots, scoring and IL come from the Sleeper league at run time; this file holds only what
+# the API does not state. Every rule switch below is an Open test in the design (section 1):
+# its default is the conservative reading (a wrong guess costs least). Settle each one with
+# the in-app test in docs/open_tests.md, then freeze it here.
+league_id: null              # from the league URL: sleeper.com/leagues/<league_id>
+username: null               # finds your roster; or set my_roster_id
+my_roster_id: null
+display_tz: Australia/Adelaide
+schedule_tz: America/New_York
+history_seasons: [2024, 2025]
+week_assignment: scheduled_et_date
+
+scoring:
+  # Settled for LeFantasy by the waiver assistant's reconciliation (30 Oct 2026):
+  # 36/36 fifty-point games stack both bonuses; 14/14 foul games deduct Sleeper's tf and ff.
+  threshold_bonus_mode: null   # stack | exclusive (run `lockin reconcile`)
+  tech_definition: null        # sleeper_tf
+
+rules:
+  final_game_pending_mode: auto_until_week_end   # open test
+  move_during_game: false                        # open test
+  bench_final_slot_rule: zero                    # open test
+  deadline_on_inactive: team_tip                 # open test
+  deadline_margin_minutes: 10
+  postponement_rule: recompute_from_schedule     # open test
+  locked_points_survive_il: unknown              # open test; never recommend moving a locked player
+  empty_slot_scores_zero: false                  # open test; false = a negative fallback cannot be dodged
+  tie_value: 0.5

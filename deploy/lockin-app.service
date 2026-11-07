@@ -1,0 +1,20 @@
+[Unit]
+Description=Sleeper Lock-In private dashboard
+After=network-online.target tailscaled.service
+
+[Service]
+Type=simple
+User=lockin
+WorkingDirectory=/opt/lockin
+EnvironmentFile=/etc/lockin.env
+ExecStart=/opt/lockin/.venv/bin/lockin app --address ${LOCKIN_BIND_ADDRESS}
+Restart=on-failure
+RestartSec=15
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/lockin/data
+
+[Install]
+WantedBy=multi-user.target

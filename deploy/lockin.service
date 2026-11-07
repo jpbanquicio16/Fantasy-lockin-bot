@@ -1,0 +1,21 @@
+[Unit]
+Description=Sleeper Lock-In event engine
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lockin
+WorkingDirectory=/opt/lockin
+EnvironmentFile=-/etc/lockin.env
+ExecStart=/opt/lockin/.venv/bin/lockin run
+Restart=on-failure
+RestartSec=15
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/lockin/data
+
+[Install]
+WantedBy=multi-user.target
